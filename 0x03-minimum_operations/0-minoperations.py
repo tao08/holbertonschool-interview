@@ -13,14 +13,15 @@ def minOperations(n):
     in the file
     """
 
-    if n <= 1:
+    if not isinstance(n, int):
         return 0
-    num, div, numOfOperations = n, 2, 0
 
-    while num > 1:
-        if num % div == 0:
-            num = num / div
-            numOfOperations = numOfOperations + div
-        else:
-            div += 1
-    return numOfOperations
+    minOpe = 0
+    i = 2
+    while (i <= n):
+        if not (n % i):
+            n = int(n / i)
+            minOpe += i
+            i = 1
+        i += 1
+    return minOpe
