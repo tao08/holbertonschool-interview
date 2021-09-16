@@ -1,30 +1,30 @@
 #include "palindrome.h"
 
 /**
- * is_palindrome - checks if a number is a palindrome
- * @n: the number to check
- * Return: 1 if n is palindrome 0 otherwise
+ * is_palindrome - determines wheter or not an unsigned integer is a palindrome
+ *
+ * @n: number to be checked
+ *
+ * Return: 1 if palindrome, and 0 otherwise
  */
+
 int is_palindrome(unsigned long n)
 {
-	int num[50];
-	int i, total_digits;
+	unsigned long idx = 10;
+	unsigned long tens = 0;
+	unsigned long b = 0;
+    int flag = 0;
 
-	/* Put the number n in array */
-	for (i = 0; n; i++)
+	while (n / idx >= 10)
+		idx *= 10;
+	while (n > 9)
 	{
-		num[i] = n % 10;
-		printf("este es n : %lu\n", n);
-		n = n / 10;
-		printf("este es num :%d\n", num[i]);
+		tens = (n / idx);
+		b = (n % 10);
+		if (tens != b)
+			return (flag);
+		n = (n % idx) / 10;
+		idx /=  100;
 	}
-	num[i] = '\0';
-	/* Go through the string to identify the palindrome */
-	total_digits = i;
-	for (i = 0; i < (total_digits / 2); i++)
-		/* If borders are diferent, then no palindrome */
-		if (num[i] != num[total_digits - 1 - i])
-			return (0);
-	/* Else is a palindrome */
 	return (1);
 }
